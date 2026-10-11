@@ -15,6 +15,7 @@ export async function ensureOwner() {
     cfg = await Config.create({ key: 'owner' });
   }
 
+  // code hash
   if (!cfg.codeHash) {
     const { LOVE_CODE } = process.env;
 
@@ -25,6 +26,10 @@ export async function ensureOwner() {
     cfg.codeHash = await bcrypt.hash(norm(LOVE_CODE), 12);
   }
 
+  else if (! await bcrypt.compare(LOVE_CODE, cfg.codeHash)) cfg.codeHash = await bcrypt.hash(norm(LOVE_CODE), 12);
+  else { }
+
+  // preview code 
   if (!cfg.previewHash) {
     const { PREVIEW_CODE } = process.env;
 
@@ -34,6 +39,9 @@ export async function ensureOwner() {
 
     cfg.previewHash = await bcrypt.hash(norm(PREVIEW_CODE), 12);
   }
+
+  else if (! await bcrypt.compare(PREVIEW_CODE, cfg.previewHash)) cfg.previewHash = await bcrypt.hash(norm(PREVIEW_CODE), 12);
+  else { }
 
   await cfg.save();
 
