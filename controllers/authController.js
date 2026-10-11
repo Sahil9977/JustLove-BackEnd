@@ -90,7 +90,7 @@ export async function verifyCode(req, res) {
   }
 
   if (valid_P) {
-     const token = signToken({ userId: 'preview' });
+    const token = signToken({ userId: 'preview' });
 
     res.cookie('auth', token, COOKIE_OPTIONS);
     return res.status(200).json({
@@ -139,6 +139,10 @@ export async function forgot(req, res) {
     cfg.otpExpires = new Date(Date.now() + 10 * 60 * 1000);
     await cfg.save();
     await sendMail({ to: req.body.email, subject: 'Your one-time JustLove code', text: `Your one-time code is ${otp}. It works for 10 minutes.` });
+    return res.status(200).json({
+      message: 'otp is sent',
+      // user: { id: 'guest' },
+    });
   } catch (e) { console.error('forgot:', e.message); }
 }
 
