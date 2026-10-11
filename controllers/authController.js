@@ -15,10 +15,12 @@ export async function ensureOwner() {
     cfg = await Config.create({ key: 'owner' });
   }
 
+  const LOVE_CODE = process.env.LOVE_CODE;
+  const PREVIEW_CODE = process.env.PREVIEW_CODE;
   // code hash
   if (!cfg.codeHash) {
-    const LOVE_CODE  = process.env.LOVE_CODE;
-    console.log(LOVE_CODE)
+
+    // console.log(LOVE_CODE + " LV")
 
     if (!LOVE_CODE) {
       throw new Error('First run: set LOVE_CODE');
@@ -32,8 +34,8 @@ export async function ensureOwner() {
 
   // preview code 
   if (!cfg.previewHash) {
-    const PREVIEW_CODE  = process.env.PREVIEW_CODE;
-    console.log(PREVIEW_CODE)
+
+    // console.log(PREVIEW_CODE + "PV")
 
     if (!PREVIEW_CODE) {
       throw new Error('First run: set PREVIEW_CODE');
