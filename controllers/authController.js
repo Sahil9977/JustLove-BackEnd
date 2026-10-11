@@ -17,7 +17,7 @@ export async function ensureOwner() {
 
   // code hash
   if (!cfg.codeHash) {
-    const { LOVE_CODE } = process.env;
+    const LOVE_CODE  = process.env.LOVE_CODE;
     console.log(LOVE_CODE)
 
     if (!LOVE_CODE) {
@@ -32,7 +32,7 @@ export async function ensureOwner() {
 
   // preview code 
   if (!cfg.previewHash) {
-    const { PREVIEW_CODE } = process.env;
+    const PREVIEW_CODE  = process.env.PREVIEW_CODE;
     console.log(PREVIEW_CODE)
 
     if (!PREVIEW_CODE) {
