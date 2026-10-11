@@ -18,6 +18,7 @@ export async function ensureOwner() {
   // code hash
   if (!cfg.codeHash) {
     const { LOVE_CODE } = process.env;
+    console.log(LOVE_CODE)
 
     if (!LOVE_CODE) {
       throw new Error('First run: set LOVE_CODE');
@@ -32,6 +33,7 @@ export async function ensureOwner() {
   // preview code 
   if (!cfg.previewHash) {
     const { PREVIEW_CODE } = process.env;
+    console.log(PREVIEW_CODE)
 
     if (!PREVIEW_CODE) {
       throw new Error('First run: set PREVIEW_CODE');
