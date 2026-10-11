@@ -24,6 +24,7 @@ export function createApp() {
 
   app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' }, contentSecurityPolicy: false }));
   app.use(cors({ origin: origins.length ? origins : false, credentials: true }));
+  console.log('CORS allowed origins:', origins);
   app.use(express.json({ limit: '100kb' }));
   app.use(cookieParser());
 
