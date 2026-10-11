@@ -23,7 +23,7 @@ export function createApp() {
   // rate limiter is in the middleware 
 
   app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' }, contentSecurityPolicy: false }));
-  app.use(cors({ origin: origins.length ? origins : false }));
+  app.use(cors({ origin: origins.length ? origins : false, credentials: true }));
   app.use(express.json({ limit: '100kb' }));
   app.use(cookieParser());
 
