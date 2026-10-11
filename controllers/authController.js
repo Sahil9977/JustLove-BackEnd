@@ -50,7 +50,7 @@ export async function ensureOwner() {
 const COOKIE_OPTIONS = {
   httpOnly: true,
   secure: true,
-  sameSite: 'none',
+  sameSite: 'strict',
   path: '/',
   maxAge: 1 * 60 * 60 * 1000, // 1 hours
 };
