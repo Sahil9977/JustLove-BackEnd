@@ -133,7 +133,7 @@ export async function logout(req, res) {
 
 // POST /api/auth/forgot  { email }  -> same reply for everyone; mail goes only to the registered owner
 export async function forgot(req, res) {
-  res.json({ message: 'If this email is registered, a code is on its way.' });
+  // res.json({ message: 'If this email is registered, a code is on its way.' });
   console.log(req.body.email)
   try {
     const cfg = await Config.findOne({ key: 'owner' });
